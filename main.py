@@ -61,29 +61,3 @@ def delete(key):
             del d[key]
             print("key is successfully deleted")
 
-#I have an additional operation of modify in order to change the value of key before its expiry time if provided
-
-#for modify operation 
-#use syntax "modify(key_name,new_value)"
-
-def modify(key,value):
-    b=d[key]
-    if b[1]!=0:
-        if time.time()<b[1]:
-            if key not in d:
-                print("error: given key does not exist in database. Please enter a valid key") #error message6
-            else:
-                l=[]
-                l.append(value)
-                l.append(b[1])
-                d[key]=l
-        else:
-            print("your time expierd for the",key) #error message5
-    else:
-        if key not in d:
-            print("error: given key does not exist in database. Please enter a valid key") #error message6
-        else:
-            l=[]
-            l.append(value)
-            l.append(b[1])
-            d[key]=l
